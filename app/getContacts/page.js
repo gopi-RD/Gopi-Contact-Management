@@ -33,10 +33,6 @@ const ContactList = () => {
 
   const token = Cookies.get("jwt_token")
   useEffect(()=>{
-    if(!token){
-      window.location.href="/login"
-    }
-
    const fetchData= async ()=>{
   const url="http://localhost:3000/api/contact"
   const options={
@@ -56,7 +52,7 @@ const ContactList = () => {
   }
 }
 fetchData()
-},[loading]) 
+},[loading][token]) 
 
 const onChangeName=(e)=>{
   setName(e.target.value)

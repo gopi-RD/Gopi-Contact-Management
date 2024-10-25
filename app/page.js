@@ -7,7 +7,7 @@ import Cookies from "js-cookie"
 
 
 
-const page = () => {
+const Page = () => {
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -198,4 +198,4 @@ const onSubmitContactData=async (event)=>{
   )
 }
 
-export default page
+export default Page
