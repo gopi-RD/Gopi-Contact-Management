@@ -1,101 +1,201 @@
-import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+"use client"
+import {useState } from "react"
+import Header from "@/components/Header/Header"
+import styles from "./home.module.css"
+import Cookies from "js-cookie"
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+
+const page = () => {
+
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [mobile, setMobile] = useState("")
+  const [address, setAddress] = useState("")
+  const [isNameEr, setIsNameEr] = useState(false)
+  const [isEmailEr, setIsEmailEr] = useState(false)
+  const [isMobileEr, setsMobileEr] = useState(false)
+  const [isAddressEr, setIsAddressEr] = useState(false)
+  const [isError, setsError] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [isErrorText, setsErrorText] = useState("")
+  const [isSuccessText, setIsSuccessText] = useState("")
+  const [isPopup, setsPopup] = useState(false)
+
+
+
+  const onChangeName=(e)=>{
+    setName(e.target.value)
+    setIsNameEr(false)
+  }
+
+  const onChangeEmail=(e)=>{
+    setEmail(e.target.value)
+    setIsEmailEr(false)
+  }
+
+  const onChangeMobile=(e)=>{
+    setMobile(e.target.value)
+    setsMobileEr(false)
+  }
+
+  const onChangeAddress=(e)=>{
+    setAddress(e.target.value)
+    setIsAddressEr(false)
+  }
+
+
+  const onPopupContainer=()=>{
+    setsPopup(true)
+  }
+
+  
+
+
+
+
+const onCancelAddContact = ()=>{
+  setsPopup(false)
 }
+
+const onSubmitContactData=async (event)=>{
+  event.preventDefault()
+  if(name===""){
+    setIsNameEr(true)
+    return
+  }
+  if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+    setIsNameEr(false)
+    setIsEmailEr(true)
+    setsError(true)
+    setsErrorText("Invalid email format")
+    return
+  }
+  if(!/^\d{10}$/.test(mobile)){
+    setIsNameEr(false)
+    setIsEmailEr(false)
+    setsMobileEr(true)
+    setsError(true)
+    setsErrorText("Invalid mobile number format")
+    return
+  }
+  if (address===""){
+    setIsNameEr(false)
+    setIsEmailEr(false)
+    setsMobileEr(false)
+    setsError(false)
+    setIsAddressEr(true)
+
+    return
+  }
+  else{
+    setIsNameEr(false)
+    setIsEmailEr(false)
+    setsMobileEr(false)
+    setIsAddressEr(false)
+    setsError(false)
+    setsErrorText("")
+  }
+
+  const addContact={
+    name:name,
+    email:email,
+    phone_no:mobile,
+    address:address,
+    time_zone:new Date()
+  }
+  const token=Cookies.get("jwt_token")
+  const url="http://localhost:3000/api/contact"
+  const options={
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json',
+      "Accept": "application/json",
+       Authorization:"Bearer "+token
+  },
+  body: JSON.stringify(addContact)
+}
+
+  const response= await fetch(url, options)
+  const data= await response.json() 
+  if (data.status === 200){
+    setIsSuccess(true)
+    setIsSuccessText(data.message)
+  }else{
+    setIsSuccess(false)
+    setIsSuccessText(data.err_msg)
+  }
+
+  setName("")
+  setEmail("")
+  setMobile("")
+  setAddress("")
+
+ 
+}
+
+  const onOpenContactDetails=()=>{
+    return (
+      <>
+      <div className={styles.popup_container}>
+                <form className={styles.contact_form_container} onSubmit={onSubmitContactData} >
+
+                   <div className={styles.contact_separator}>
+                       <label className={styles.label_e}>NAME</label>
+                       <input className={`${styles.input_text_e} ${ isNameEr && styles.error_input_border}`} type="text" value={name} placeholder="Enter name" onChange={onChangeName}/> 
+                       {isNameEr && <p className={styles.error_text}>*Required</p>}
+                   </div>
+
+                   <div className={styles.contact_separator}>
+                       <label className={styles.label_e}>Email</label>
+                       <input className= {`${styles.input_text_e} ${ isEmailEr && styles.error_input_border}`} type="email" value={email} placeholder="Enter email" onChange={onChangeEmail} />
+                       {isEmailEr && <p className={styles.error_text}>*Required</p>}
+                   </div>
+                   <div className={styles.contact_separator}>
+                       <label className={styles.label_e}>MOBILE NO</label>
+                       <input className= {`${styles.input_text_e} ${ isMobileEr && styles.error_input_border}`} type="number" value={mobile} placeholder="Enter mobile no" onChange={onChangeMobile} />
+                       {isMobileEr && <p className={styles.error_text}>*Required</p>}
+                   </div>
+                   <div className={styles.contact_separator}>
+                       <label className={styles.label_e}>ADDRESS</label>
+                       <input className={`${styles.input_text_e} ${ isAddressEr && styles.error_input_border}`} type="text" value={address} placeholder="Enter address" onChange={onChangeAddress} />
+                       {isAddressEr && <p className={styles.error_text}>*Required</p>}
+                   </div>
+                   
+                   <div className={styles.buttons_container}>
+                       <button type="submit" className={styles.submit_button_e} >
+                           Submit
+                       </button>
+                       <button className={styles.cancel_button} type="button" onClick={onCancelAddContact}>
+                        Cancel
+                       </button>
+                   </div>
+                   <div  className={styles.buttons_container}>
+                   {isError && <p className={styles.error_text}>{isErrorText}</p>}
+                   {isSuccess && <p className={styles.success_text}>{isSuccessText}</p>}
+                   </div>
+
+
+
+        </form>
+
+    </div>
+    </>
+    )
+  }
+  
+  return (
+    <>
+    <Header />
+   
+          <div className={styles.bg_home_container}>
+                <h1 className={styles.contact_panel_heading}>Welcome Contact Panel</h1>
+                <button className={styles.add_contact_button} type="button" onClick={onPopupContainer} >Add Contacts</button>
+                {isPopup && onOpenContactDetails()}
+            </div>
+            </>        
+  )
+}
+
+export default page

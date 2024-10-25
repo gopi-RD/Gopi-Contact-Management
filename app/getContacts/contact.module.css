@@ -1,0 +1,149 @@
+
+
+.contact_list_items{
+    list-style-type: none;
+    padding-left: 0px; 
+    margin-top: 40px;
+}
+
+
+.contact_item{
+    background-color:lightblue;
+    display:flex;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.name{
+    margin-right: 12%;
+    margin-left: 5%;
+}
+.email{
+    margin-right:13%;
+
+}
+.mobile{
+    margin-right:14%;
+}
+.address{
+    margin-right: 12%;
+}
+.create_date{
+    margin-right: 12%;
+}
+.action{
+    margin-right: 10%;
+
+}
+
+.loading_container{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 40px;
+
+
+}
+
+.popup_container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    margin-top:60px;
+}
+.contact_form_container{
+    background-color: #fefefe;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-top:20px;
+    padding-bottom:20px;
+
+}
+
+.contact_separator{
+    margin-bottom:10px;
+    display:flex;
+    flex-direction: column;
+}
+.label_e{
+    font-size: 17px;
+    margin-bottom: 5px;
+    color: #8a8484;
+}
+.input_text_e{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #352b2b;
+}
+
+.cancel_button{
+    padding: 10px 20px;
+    background-color: #3c9457;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 12px;
+}
+
+.submit_button_e{
+    background-color: rgb(48, 116, 206);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.submit_button_e:hover{
+    background-color: rgb(42, 96, 186);
+}
+
+
+.buttons_container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+
+}
+
+
+.error_text{
+    color: red;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.error_input_border{
+    border: 1px solid red;
+}
+.success_text{
+    color:green;
+    margin-top: 5px;
+    font-size: 16px;
+}
+.no_contact_text{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #8a8484;
+}

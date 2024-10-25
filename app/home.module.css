@@ -1,0 +1,127 @@
+.bg_home_container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto";
+}
+.contact_panel_heading{
+    font-size: 24px;
+    color: rgb(110, 143, 192);
+    font-weight: 600;
+
+}
+.add_contact_button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: rgb(110, 143, 192);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 12px;
+}
+
+.add_contact_button:hover{
+    background-color:orange;
+    transition: background-color 0.3s ease;
+    color: #000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.popup_container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    margin-top:60px;
+}
+.contact_form_container{
+    background-color: #fefefe;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-top:20px;
+    padding-bottom:20px;
+
+}
+
+.contact_separator{
+    margin-bottom:10px;
+    display:flex;
+    flex-direction: column;
+}
+.label_e{
+    font-size: 17px;
+    margin-bottom: 5px;
+    color: #8a8484;
+}
+.input_text_e{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #352b2b;
+}
+
+.cancel_button{
+    padding: 10px 20px;
+    background-color: #3c9457;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 12px;
+}
+
+.submit_button_e{
+    background-color: rgb(48, 116, 206);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.submit_button_e:hover{
+    background-color: rgb(42, 96, 186);
+}
+
+
+.buttons_container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+
+}
+
+
+.error_text{
+    color: red;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.error_input_border{
+    border: 1px solid red;
+}
+.success_text{
+    color:green;
+    margin-top: 5px;
+    font-size: 16px;
+}
